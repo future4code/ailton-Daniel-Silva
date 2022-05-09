@@ -1,0 +1,3 @@
+# Aprendizados da semana
+
+Na semana inicial da **Labenu**, aprendi a utilizar o terminal, com alguns comandos que ajudam a navegar atraves dele. Aprendi a navegar por pastar, criar pastar, criar arquivos, ler arquivos atraves do terminal, sem utilizar a interface grafica do computador. Aprendi tambem como utilizar o git e o github, alguns de seus comandos, como enviar arquivos para a parte remota, como volta-los a parte local. E por ultimo, que esta acontecendo agora, estou aprendendo um pouco sobre como utilizar o VSCode para programar.
