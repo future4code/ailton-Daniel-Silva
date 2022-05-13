@@ -188,11 +188,6 @@ function checaValidadeInscricaoLabenu() {
   const resp2 = prompt("Você possui ensino médio completo?");
   const resp3 = prompt("Você possui disponibilidade exclusiva durante os horários do curso?")
 
-  if (resp1 === resp2 === resp3) {
-    console.log(true)
-  }
-  else {
-    console.log(false)
-  }
-
+console.log(resp1 === "sim" && resp2 === "sim" && resp3 === "sim");
+    
 }
