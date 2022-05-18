@@ -67,7 +67,7 @@ function funcao2 (array) {
     console.log(array[i]/10)
 }
 
-// funcao2(arrayOriginal)
+ funcao2(arrayOriginal)
 
 // c)
 
@@ -119,7 +119,7 @@ function funcao5(array) {
 console.log(`O maior numero é ${maiorNumero} e o menor é ${menorNumero}`)
 }
 
-// funcao5(arrayOriginal)
+ funcao5(arrayOriginal)
 
 // [DESAFIO 1]
 
