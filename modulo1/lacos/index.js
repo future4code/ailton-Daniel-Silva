@@ -173,7 +173,7 @@ const joguinho2 = () => {
                 console.log(`O número que você escolheu foi ${segundoNumero}
                 Ele é menor que o número do jogo`)
             } else if (primeiroNumero < segundoNumero) {
-                console.log(`O número que você escolheu foi ${primeiroNumero}
+                console.log(`O número que você escolheu foi ${segundoNumero}
                 Ele é maior que o número do jogo`)
             } else {
                 console.log("Você acertou!")
