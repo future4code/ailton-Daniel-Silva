@@ -99,8 +99,25 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
+
+    let maiorNumero = -10000
+    let menorNumero = 10000
+    let arrayNova = []
+
+    for (let i = 0; i < array.length; i++)
+    elemento = array[i]
+    if (elemento > maiorNumero)
+      maiorNumero = elemento
+      arrayNova.push(maiorNumero)
+
+    elemento2 = array[i]
+    if(elemento < menorNumero)
+    menorNumero = elemento
+    arrayNova.push(menorNumero)
+
+    console.log(arrayNova)
   
-}
+} 
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
@@ -118,11 +135,20 @@ function retornaPessoaAnonimizada(pessoa) {
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
    
+    const pessoasAutorizadas = pessoas.filter((autorizadas) => {
+    return autorizadas.altura >= 1.5 && autorizadas.idade >= 15 &&
+    autorizadas.idade < 60
+    })
+    return pessoasAutorizadas
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+  const pessoasNaoAutorizadas = pessoas.filter((naoAutorizadas) => {
+  return naoAutorizadas.altura < 1.5 || naoAutorizadas.idade <= 14 ||
+  naoAutorizadas.idade >= 60
+  })
+  return pessoasNaoAutorizadas
 }
 
 // EXERCÍCIO 14
