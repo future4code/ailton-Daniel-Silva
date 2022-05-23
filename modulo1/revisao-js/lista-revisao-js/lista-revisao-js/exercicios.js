@@ -77,8 +77,13 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
+   let arrayzinha = []
+   for (let i = 0; i < n; i++)
+   arrayzinha.push(i*2)
+
+   return arrayzinha
 }
+
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
