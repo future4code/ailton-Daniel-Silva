@@ -100,22 +100,30 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
 
-    let maiorNumero = -10000
-    let menorNumero = 10000
-    let arrayNova = []
+    let maiorNumero = -Infinity
+    let segMaior = -Infinity
+    let menorNumero = Infinity
+    let segMenor = Infinity
 
-    for (let i = 0; i < array.length; i++)
-    elemento = array[i]
-    if (elemento > maiorNumero)
+    for (let elemento of array) {
+    if (elemento > maiorNumero) {
       maiorNumero = elemento
-      arrayNova.push(maiorNumero)
-
-    elemento2 = array[i]
-    if(elemento < menorNumero)
+    }
+    if (elemento < menorNumero) {
     menorNumero = elemento
-    arrayNova.push(menorNumero)
+    }
+    }
 
-    console.log(arrayNova)
+    for (let elemento of array) {
+    if (elemento > segMaior && elemento !== maiorNumero) {
+        segMaior = elemento
+    }
+    if (elemento < segMenor && elemento !== menorNumero) {
+        segMenor = elemento
+    }
+    }
+
+    return [segMaior, segMenor]
   
 } 
 
@@ -153,7 +161,12 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+ contas.map((clientes) => {
+     for (let compra of clientes.compras){
+         clientes.saldoTotal = clientes.saldoTotal - compra
+     }
+     return {}
+ })
 }
 
 // EXERCÍCIO 15A
