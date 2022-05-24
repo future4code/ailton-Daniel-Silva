@@ -110,7 +110,7 @@ function retornaSegundoMaiorESegundoMenor(array) {
       maiorNumero = elemento
     }
     if (elemento < menorNumero) {
-    menorNumero = elemento
+      menorNumero = elemento
     }
     }
 
@@ -152,6 +152,7 @@ function retornaPessoasAutorizadas(pessoas) {
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
+
   const pessoasNaoAutorizadas = pessoas.filter((naoAutorizadas) => {
   return naoAutorizadas.altura < 1.5 || naoAutorizadas.idade <= 14 ||
   naoAutorizadas.idade >= 60
@@ -174,10 +175,40 @@ let compras = contas.map((clientes) => {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
-}
+
+ function alfabArray (a, b) {
+     if (a.nome > b.nome) {
+         return 1
+     }
+     if (a.nome < b.nome) {
+         return -1
+     } 
+     return 0
+ }
+  let novoArray = consultas.sort(alfabArray)
+  return novoArray
+} 
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
    
+    const formatDate = (dataDaConsulta) => {
+        let dataNova = dataDaConsulta.getFullYear() + "-" + (dataDaConsulta.getMonth() + 1) +
+        "-" + dataDaConsulta.getDate()
+        return dataNova
+    }
+    formatDate(consultas)
+   console.log(formatDate(consultas))
+   
+ function dataArray (a, b) {
+     if (a.dataNova > b.dataNova) {
+       return 1
+     }
+     if (a.dataNova < b.dataNova) {
+         return -1
+     }
+     return 0
+ }
+  let arrayDatas = consultas.sort(dataArray)
+  return arrayDatas
 }
