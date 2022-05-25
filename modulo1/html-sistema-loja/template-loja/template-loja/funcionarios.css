@@ -1,0 +1,53 @@
+.cor-producao {
+    background-color: lightgoldenrodyellow;
+    display: inline;
+    margin: 16px 16px 32px 16px;
+    padding: 4px;
+}
+
+.cor-mkt {
+    background-color: lightgoldenrodyellow;
+    display: inline;
+    margin: 16px 16px 32px 16px;
+    padding: 4px;
+}
+
+.cor-fin {
+    background-color: lightgoldenrodyellow;
+    display: inline;
+    margin: 16px 16px 32px 16px;
+    padding: 4px;
+}
+
+.cor-comercial {
+    background-color:lightgoldenrodyellow;
+    display: inline;
+    margin: 16px 16px 32px 16px;
+    padding: 4px;
+}
+
+nav {
+    margin: 20px;
+}
+nav a {
+   margin-right: 10px;
+   text-decoration: none;
+   font-size: 16px;
+   color: black;
+   border: 1px solid black;
+   border-radius: 10px;   padding: 5px;
+}
+nav a:hover {
+    background-color: blue;
+    color: white;
+}
+
+.rodape {
+    bottom: 0;
+    background-color: lightgoldenrodyellow;
+    color: black;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    position: fixed; 
+}

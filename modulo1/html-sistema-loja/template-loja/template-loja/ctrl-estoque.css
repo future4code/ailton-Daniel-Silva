@@ -1,0 +1,40 @@
+.org-tabelas {
+    padding: 60px;
+    background-color:lightgoldenrodyellow;
+    border: 2px solid black;
+}
+
+.cor-titulo {
+    background-color: gold;
+    border: 1px solid black;
+}
+
+.cor-produtos {
+    background-color: lightgoldenrodyellow;
+    border: 1px solid black;
+}
+
+nav {
+    margin: 20px;
+}
+nav a {
+   margin-right: 10px;
+   text-decoration: none;
+   font-size: 16px;
+   color: black;
+   border: 1px solid black;
+   border-radius: 10px;   padding: 5px;
+}
+nav a:hover {
+    background-color: blue;
+    color: white;
+}
+
+.rodape {
+    bottom: 0;
+    background-color: lightgoldenrodyellow;
+    color: black;
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
