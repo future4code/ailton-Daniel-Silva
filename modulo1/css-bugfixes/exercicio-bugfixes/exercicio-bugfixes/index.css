@@ -21,9 +21,9 @@ input {
     width: 500px;
 }
 
-button:focus {
-    color: white;
-}
+/* button:focus {
+    color: white; */
+/* } */
 
 img {
     width: 50px;
@@ -33,9 +33,9 @@ div>p:first-child {
     display: inline;
 }
 
-/* div img {
-    background: black; */
-/* } */
+div img {
+    background: white; 
+}
 
 .botao-amarelo {
     background-color: #ffaf43;
@@ -126,10 +126,17 @@ td button {
     border-radius: 5px;
     font-size: 10px;
     color: black;
-    text-align: center;
-    
+    margin: 0 auto;
 }
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+td button:hover {
+  background-color: #fe7e02;
+}
+
+td button:active {
+    color: white;
 }
