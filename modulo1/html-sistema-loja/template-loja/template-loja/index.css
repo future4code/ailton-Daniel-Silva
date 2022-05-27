@@ -1,0 +1,56 @@
+h1 {
+    color: red;
+    background-color: black;
+    display: inline;
+    margin: 0 720px;
+}
+
+.sub-titulo {
+    margin: 0 740px;
+    display: inline;
+    
+}
+
+.imagem {
+    margin: 0 400px;
+} 
+
+.texto-acima-img {
+    margin: 0 410px;
+}
+
+.textos {
+    margin: 0 620px;
+    background-color: lightgoldenrodyellow;
+    padding: 0 60px;
+}
+
+nav {
+    text-align: center;
+    margin: 30px;
+}
+nav a {
+   margin-right: 10px;
+   text-decoration: none;
+   font-size: 16px;
+   color: black;
+   border: 1px solid black;
+   border-radius: 10px;   padding: 5px;
+}
+nav a:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+
+.rodape {
+    bottom: 0;
+    background-color: lightgoldenrodyellow;
+    color: black;
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+  
