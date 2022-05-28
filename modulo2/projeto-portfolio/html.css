@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, 
+    rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    
+    }
+
+.cabecalho {
+background-color:darkgrey;
+color: midnightblue;
+border: 2px solid black;
+padding: 30px;
+
+}
+#texto.cabecalho {
+ display: inline;
+}
+
+nav {
+    display: inline;
+    margin-left: 0;
+    margin-right: 0px;
+}
+nav a {
+   margin-left: 100px;
+   margin-right: 0;
+   text-decoration: none;
+   font-size: 16px;
+   color: black;
+   border: 2px solid black;
+   border-radius: 10px;   padding: 5px;
+}
+nav a:hover {
+    background-color: black;
+    color: white;
+}
+
+.titulo {
+    font-size: 50px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.rodape {
+    margin-top: 40px;
+    bottom: 0;
+    background-color: darkgrey;
+    color: midnightblue;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    border: 2px solid black;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.icones {
+    margin: 10px 10px 0 10px;
+}
+
+.icones:hover {
+    background-color: white;
+    color: black;
+}
+
+.moldura-projetos {
+    text-align: center;
+    margin: 80px;
+    padding: 50px;
+}
+
+.img-projetos {
+    display: inline-block;
+    width: 600px;
+    height: 385px;
+    border: 2px solid white;
+}
+
+.texto-projetos {
+    display: inline-block;
+    font-size: 30px;
+    color: whitesmoke;
+    text-align: center;
+    border: 4px solid white;
+    margin: 0 30px;
+    padding: 10px;
+}
