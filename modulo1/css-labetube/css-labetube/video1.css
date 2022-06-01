@@ -65,3 +65,19 @@ video {
   margin: 4px;
   padding: 4px;
 }
+
+@media screen and (min-width : 320px) and (max-width : 480px) {
+
+    main {
+    width: 100%;
+    }
+    
+    button {
+           display: none;
+       }
+       
+    .rodape {
+        font-size: 15px;
+        flex-direction: column;
+    }
+    }
