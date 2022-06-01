@@ -6,7 +6,7 @@
 
 .container {
     display: grid;
-    grid-template-rows: 10vh 80vh 10vh;
+    grid-template-rows: 10vh 100% 10vh;
 }
 
 header {
@@ -46,8 +46,8 @@ main {
 }
 
 video {
-    border: 4px solid white;
     height: 600px;
+    width: 90%;
 }
 
 .rodape {
@@ -68,16 +68,31 @@ video {
 
 @media screen and (min-width : 320px) and (max-width : 480px) {
 
-    main {
-    width: 100%;
-    }
-    
     button {
            display: none;
        }
        
     .rodape {
-        font-size: 15px;
-        flex-direction: column;
+        font-size: 16px;
     }
+
+    .icones {
+        height: 35px;
+        width: 35px;
     }
+@media screen and (min-width : 481px) and (max-width : 800px) {
+        
+        button {
+               display: none;
+           }
+           
+        .rodape {
+            font-size: 16px;
+        }
+    
+        .icones {
+            height: 35px;
+            width: 35px;
+        }  
+}
+}
