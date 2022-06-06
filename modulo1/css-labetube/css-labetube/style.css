@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 10vh 100% 10vh;
+}
+
+header {
+    background-color:firebrick;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border: 1px solid black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 30px;
+}
+
+input {
+    border: 2px solid black;
+    font-size: 20px;
+}
+
+button {
+    padding: 16px;
+    background-color: black;
+    color: red;
+    border: 1px solid white;
+}
+
+main {
+    background-color:darksalmon;
+    display: grid;
+    gap: 40px;
+    padding: 60px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    justify-items: center;
+    align-items: center;
+    /* grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr); */
+}
+
+.video-card {
+    height: 200px;
+    width: 250px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    height: 250px;
+    border: 3px solid black;
+    flex-direction: column;
+
+}
+
+.rodape {
+    background-color:firebrick;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+.icones {
+  margin: 4px;
+  padding: 4px;
+}
+
+@media screen and (min-width : 320px) and (max-width : 480px) {
+
+main {
+width: 100%;
+}
+
+button {
+       display: none;
+   }
+   
+.rodape {
+    font-size: 16px;
+}
+
+.icones {
+    height: 35px;
+    width: 35px;
+}
+}
