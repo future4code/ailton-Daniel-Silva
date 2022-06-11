@@ -17,16 +17,15 @@ const BoxTexto = styled.p`
 word-break: break-all;
 `
 const BoxNick = styled.h4`
-
 `
 
 class MsgWhatsLab extends Component {
     render() {
     return ( <>
-      <BoxMensagem key={this.props.index}>
+      <BoxMensagem key={this.props.index} onDoubleClick={this.props.onDoubleClick}>
       <BoxNick>{this.props.nomeUsuario}</BoxNick>
       <p>:</p>
-      <BoxTexto>{this.props.textoMensagem}</BoxTexto>
+      <BoxTexto> {this.props.textoMensagem}</BoxTexto>
       </BoxMensagem>
     </>
         

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import React from 'react';
 import logo from './img/discordia.png'
 import MsgWhatsLab from './components/MsgWhatsLab/MsgWhatsLab'
+import MsgWhatsLabEu from './components/MsgWhatsLabEu/MsgWhatsLabEu';
 
 const Header = styled.header`
 height: 9vh;
@@ -40,7 +41,6 @@ justify-content: space-around;
 const MainContainer = styled.div`
 display: flex;
 flex-direction: column;
-align-items: flex-end;
 justify-content: end;
 margin: 0 auto;
 width: 600px;
@@ -74,32 +74,26 @@ class App extends React.Component {
     inputUsuario: "",
     inputMensagem: ""
   }
-  
+
   enviaMensagem = () => {
 
-    if(this.state.inputUsuario === "" && this.state.inputMensagem === "") {
+    if (this.state.inputUsuario === "" && this.state.inputMensagem === "") {
       alert("Digite algo!")
     } else {
-    const novaMensagem = {
-      nomeUsuario: this.state.inputUsuario,
-      textoMensagem: this.state.inputMensagem
+      const novaMensagem = {
+        nomeUsuario: this.state.inputUsuario,
+        textoMensagem: this.state.inputMensagem
+      }
+
+      const mensagensAtualizado = [...this.state.mensagem, novaMensagem]
+
+      this.setState({ mensagem: [...mensagensAtualizado] })
+      this.setState({
+        inputMensagem: ""
+      })
     }
-
-    const mensagensAtualizado = [...this.state.mensagem, novaMensagem]
-
-    this.setState({mensagem: [...mensagensAtualizado]})
-    this.setState({
-      inputMensagem: ""
-    })
-  }
   }
 
-  removeMensagem = (id) => {
-    const arrayMensagemApagada = this.state.mensagem.filter((mensagem, index) => {
-    return id !== index
-    })
-  }
-  
   onChangeInputUsuario = (event) => {
     this.setState({ inputUsuario: event.target.value })
   }
@@ -110,51 +104,71 @@ class App extends React.Component {
 
   onKeyPressEnter = (event) => {
     if (event.key === "Enter") {
-      
-    const novaMensagem = {
-      nomeUsuario: this.state.inputUsuario,
-      textoMensagem: this.state.inputMensagem
+
+      const novaMensagem = {
+        nomeUsuario: this.state.inputUsuario,
+        textoMensagem: this.state.inputMensagem
+      }
+
+      const mensagensAtualizado = [...this.state.mensagem, novaMensagem]
+
+      this.setState({ mensagem: [...mensagensAtualizado] })
+      this.setState({
+        inputMensagem: ""
+      })
+
     }
+  }
 
-    const mensagensAtualizado = [...this.state.mensagem, novaMensagem]
-
-    this.setState({mensagem: [...mensagensAtualizado]})
-    this.setState({
-      inputMensagem: ""
+  removeMensagem = (id) => {
+    const arrayMensagemApagada = this.state.mensagem.filter((mensagem, index) => {
+      return id !== index
     })
-  
-    }
+
+    this.setState({ mensagem: arrayMensagemApagada })
   }
 
   render() {
 
     const mensagemNaTela = this.state.mensagem.map((mensagem, index) => {
-      return (
-      <>
-        <MsgWhatsLab key={index}
-        nomeUsuario = {mensagem.nomeUsuario}
-        textoMensagem = {mensagem.textoMensagem}
+      if (mensagem.nomeUsuario.toLowerCase() === "eu") {
+        return (
+          <>
+            <MsgWhatsLabEu key={index}
+              textoMensagem={mensagem.textoMensagem}
+              onDoubleClick={() => this.removeMensagem(index)}
+            />
+          </>
+        )
+      } else {
+        return (
+          <>
+            <MsgWhatsLab key={index}
+              nomeUsuario={mensagem.nomeUsuario}
+              textoMensagem={mensagem.textoMensagem}
+              onDoubleClick={() => this.removeMensagem(index)}
 
-        />
-      </>
-      )
-     }
+            />
+          </>
+        )
+      }
+    }
     )
 
     return (
-    <>
-      
-      <Header>
+      <>
+
+        <Header>
           <HeaderImg src={logo} alt="logo" />
           <HeaderText>WhatsLab</HeaderText>
-         
-      </Header>
 
-      <MainContainer>
+        </Header>
+
+        <MainContainer>
           {mensagemNaTela}
-      </MainContainer>
+        </MainContainer>
 
-      <Footer>
+        <Footer>
           <InputUser
             value={this.state.inputUsuario}
             onChange={this.onChangeInputUsuario}
@@ -169,8 +183,8 @@ class App extends React.Component {
           />
 
           <BotaoEnviar onClick={this.enviaMensagem}> Enviar </BotaoEnviar>
-      </Footer>
-    </>
+        </Footer>
+      </>
     )
   }
 }
