@@ -74,18 +74,23 @@ width: 150px;
 padding: 5px;
 background-color: #E9967A;
 `
+const PlaylistListButton = styled.button`
+width: 150px;
+padding: 5px;
+background-color: #E9967A;
+`
 
 export default class CreatePlaylist extends React.Component {
 
     state = {
-        inputPlaylist: "",
+        name: "",
         listaPlaylists: [],
     }
 
     createPlaylist = () => {
 
         const body = {
-            name: this.state.inputPlaylist
+            name: this.state.name
         }
 
         axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists`,
@@ -96,12 +101,12 @@ export default class CreatePlaylist extends React.Component {
         })
             .then((response) => {
                 alert("Playlist Criada!")
-                const novaListaPlaylists = [...this.state.listaPlaylists, this.state.inputPlaylist]
+                const novaListaPlaylists = [...this.state.listaPlaylists, this.state.name]
                 this.setState({
                     listaPlaylists: novaListaPlaylists
                 })
                 this.setState({
-                    inputPlaylist: ""
+                    name: ""
                 })
             })
             .catch((error) => {
@@ -111,7 +116,7 @@ export default class CreatePlaylist extends React.Component {
 
     onChangePlaylist = (event) => {
         this.setState({
-            inputPlaylist: event.target.value
+            name: event.target.value
         })
     }
 
@@ -141,9 +146,7 @@ export default class CreatePlaylist extends React.Component {
                             onChange={this.onChangePlaylist}
                         />
                         <AddPlaylistButton onClick={this.createPlaylist}>Adicionar</AddPlaylistButton>
-                        <div>
-                            <ul>{todasPlaylists}</ul>
-                        </div>
+                        <PlaylistListButton onClick={this.props.listaPlaylistPage}>Lista de Playlists</PlaylistListButton>
                     </BoxCriaPlaylist>
                 </Main>
 
