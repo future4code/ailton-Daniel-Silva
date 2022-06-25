@@ -51,6 +51,14 @@ background-color: black;
 color: white;
 `
 
+const AddMusicaBox = styled.div`
+border: 3px solid white;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+`
+
 const DetailsBox = styled.div`
 `
 
@@ -73,29 +81,43 @@ export default class DetailsPlaylist extends React.Component {
         novaMusica: {}
     }
 
-    addTrackToPlaylist = (id) => {
-
+    addTrackToPlaylist = () => {
         const body = {
             name: this.state.name,
             artist: this.state.artist,
             url: this.state.url
         }
 
-        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`,
+        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.idPlaylist}/tracks`,
             body, {
             headers: {
                 Authorization: "daniel-silva-ailton"
             }
         })
             .then((res) => {
-                alert("Playlist Criada!")
-                const novaListaMusicas = [...this.state.listaDeMusicas, this.state.novaMusica]
-                this.setState({
-                    listaDeMusicas: novaListaMusicas
-                })
+                alert("Música Adicionada!")
+                this.getPlaylistsTracks(this.props.idPlaylist)
             })
             .catch((error) => {
                 alert("Algo deu errado!")
+            })
+    }
+
+    getPlaylistsTracks = (id) => {
+
+        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`,
+            {
+                headers: {
+                    Authorization: "daniel-silva-ailton"
+                }
+            })
+            .then((res) => {
+                this.setState({
+                    listaDeMusicas: res.data.result.tracks
+                })
+            })
+            .catch((error) => {
+                console.log(error.message)
             })
     }
 
@@ -118,10 +140,15 @@ export default class DetailsPlaylist extends React.Component {
     }
 
     render() {
-     
+
+        const listaMusicas = this.state.listaDeMusicas.map((item, index) => {
+            return <li key={index}> {item.name} {item.artist}</li>
+        })
+
         return (
+            
             <Container>
-                
+
                 <Header>
                     <LeftHeader>
                         <ImagemHeader src={logo} />
@@ -129,34 +156,36 @@ export default class DetailsPlaylist extends React.Component {
                     </LeftHeader>
                     <ButtonHeader>Crie uma conta</ButtonHeader>
                 </Header>
-                
+
                 <Main>
                     <BoxFrase> Detalhes da Playlist </BoxFrase>
                     <DetailsBox>
-                        {this.props.playlistInfos}
+                        {listaMusicas}
                     </DetailsBox>
-                    <label>Música:</label>
-                    <input 
-                    placeholder='Música'
-                    value={this.state.name}
-                    onChange={this.onChangeMusic}
-                    />
+                    <AddMusicaBox>
+                        <label>Música:</label>
+                        <input
+                            placeholder='Música'
+                            value={this.state.name}
+                            onChange={this.onChangeMusic}
+                        />
 
-                    <label>Artista:</label>
-                    <input
-                    placeholder='Artista'
-                    value={this.state.artist}
-                    onChange={this.onChangeArtist}
-                    />
+                        <label>Artista:</label>
+                        <input
+                            placeholder='Artista'
+                            value={this.state.artist}
+                            onChange={this.onChangeArtist}
+                        />
 
-                    <label>URL:</label>
-                    <input
-                    placeholder='URL'
-                    value={this.state.url}
-                    onChange={this.onChangeUrl}
-                    />
+                        <label>URL:</label>
+                        <input
+                            placeholder='URL'
+                            value={this.state.url}
+                            onChange={this.onChangeUrl}
+                        />
 
-                    <button onClick={this.addTrackToPlaylist}>Adicionar Música</button>
+                        <button onClick={this.addTrackToPlaylist}>Adicionar Música</button>
+                    </AddMusicaBox>
                 </Main>
 
                 <Footer>Eu sou o Footer</Footer>

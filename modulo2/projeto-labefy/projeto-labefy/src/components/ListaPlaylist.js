@@ -93,10 +93,8 @@ export default class ListaPlaylist extends React.Component {
         playlists: [],
         showScreen: false,
         playlistInfos: {},
-        name: "",
-        artist: "",
-        url: "",
         listaDeMusicas: [],
+        idPlaylist: ""
     }
 
     componentDidMount() {
@@ -142,46 +140,27 @@ export default class ListaPlaylist extends React.Component {
         }
     }
 
-    getPlaylistsTracks = (id) => {
-
-        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`,
-            {
-                headers: {
-                    Authorization: "daniel-silva-ailton"
-                }
-            })
-            .then((res) => {
-                this.setState({
-                    playlistInfos: res.data.result.tracks
-                })
-                this.setState({
-                    showScreen: true
-                })
-            })
-            .catch((error) => {
-                console.log(error.message)
-            })
-    }
-
     changeScreen = () => {
         this.setState({
             showScreen: !this.state.showScreen
         })
     }
-    
+
     render() {
 
         const listaDePlaylists = this.state.playlists?.map((playlist) => {
             return <CardPlaylist key={playlist.id}>
                 {playlist.name}
-                <DetailsButton onClick={() => this.getPlaylistsTracks(playlist.id)}> Detalhes </DetailsButton>
+                <DetailsButton onClick={() => this.props.irParaDetalhes(playlist.id)}> Detalhes </DetailsButton>
                 <DeleteButton onClick={() => this.deletePlaylist(playlist.id)}> Delete </DeleteButton>
             </CardPlaylist>
         })
 
         return (
             <>
-                {this.state.showScreen ? <DetailsPlaylist playlists={this.state.playlists} playlistInfos={this.state.playlistInfos} deletePlaylist={this.deletePlaylist} /> :
+                {this.state.showScreen ? <DetailsPlaylist playlists={this.state.playlists}
+                    playlistInfos={this.state.playlistInfos} deletePlaylist={this.deletePlaylist}
+                    idPlaylist={this.state.idPlaylist} getPlaylistsTracks={this.getPlaylistsTracks} /> :
                     <Container>
                         <Header>
                             <LeftHeader>
