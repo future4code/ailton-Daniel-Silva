@@ -142,7 +142,7 @@ export default class CreatePlaylist extends React.Component {
                         <label>Digite o nome da Playlist:</label>
                         <input
                             placeholder='Digite a Playlist'
-                            value={this.state.inputPlaylist}
+                            value={this.state.name}
                             onChange={this.onChangePlaylist}
                         />
                         <AddPlaylistButton onClick={this.createPlaylist}>Adicionar</AddPlaylistButton>

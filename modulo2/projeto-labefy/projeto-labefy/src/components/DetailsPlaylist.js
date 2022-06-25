@@ -65,10 +65,60 @@ background: linear-gradient(190deg, #8B0000 0%, #F08080 40%, #8B0000 100%);
 
 export default class DetailsPlaylist extends React.Component {
 
-    render() {
-        console.log(this.props.playlistInfos)
-        console.log(this.props.playlists)
+    state = {
+        name: "",
+        artist: "",
+        url: "",
+        listaDeMusicas: [],
+        novaMusica: {}
+    }
 
+    addTrackToPlaylist = (id) => {
+
+        const body = {
+            name: this.state.name,
+            artist: this.state.artist,
+            url: this.state.url
+        }
+
+        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`,
+            body, {
+            headers: {
+                Authorization: "daniel-silva-ailton"
+            }
+        })
+            .then((res) => {
+                alert("Playlist Criada!")
+                const novaListaMusicas = [...this.state.listaDeMusicas, this.state.novaMusica]
+                this.setState({
+                    listaDeMusicas: novaListaMusicas
+                })
+            })
+            .catch((error) => {
+                alert("Algo deu errado!")
+            })
+    }
+
+    onChangeMusic = (event) => {
+        this.setState({
+            name: event.target.value
+        })
+    }
+
+    onChangeArtist = (event) => {
+        this.setState({
+            artist: event.target.value
+        })
+    }
+
+    onChangeUrl = (event) => {
+        this.setState({
+            url: event.target.value
+        })
+    }
+
+    render() {
+     
         return (
             <Container>
                 
@@ -83,9 +133,30 @@ export default class DetailsPlaylist extends React.Component {
                 <Main>
                     <BoxFrase> Detalhes da Playlist </BoxFrase>
                     <DetailsBox>
-                        {/* {this.props.playlist.name} */}
                         {this.props.playlistInfos}
                     </DetailsBox>
+                    <label>Música:</label>
+                    <input 
+                    placeholder='Música'
+                    value={this.state.name}
+                    onChange={this.onChangeMusic}
+                    />
+
+                    <label>Artista:</label>
+                    <input
+                    placeholder='Artista'
+                    value={this.state.artist}
+                    onChange={this.onChangeArtist}
+                    />
+
+                    <label>URL:</label>
+                    <input
+                    placeholder='URL'
+                    value={this.state.url}
+                    onChange={this.onChangeUrl}
+                    />
+
+                    <button onClick={this.addTrackToPlaylist}>Adicionar Música</button>
                 </Main>
 
                 <Footer>Eu sou o Footer</Footer>

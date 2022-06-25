@@ -163,34 +163,12 @@ export default class ListaPlaylist extends React.Component {
             })
     }
 
-    addTrackToPlaylist = (id) => {
-
-        const body = {
-            name: this.state.name,
-            artist: this.state.artist,
-            url: this.state.url
-        }
-
-        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`,
-            body, {
-            headers: {
-                Authorization: "daniel-silva-ailton"
-            }
-        })
-            .then((res) => {
-            })
-            .catch((error) => {
-            })
-    }
-
     changeScreen = () => {
         this.setState({
             showScreen: !this.state.showScreen
         })
     }
-
-
-
+    
     render() {
 
         const listaDePlaylists = this.state.playlists?.map((playlist) => {
