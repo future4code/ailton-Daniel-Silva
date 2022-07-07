@@ -1,38 +1,63 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
+// import styled from "styled-components";
+import ChooseButton from "../ChooseButton/ChooseButton"
+import ProfileCard from "../ProfileCard/ProfileCard";
 import { useState, useEffect } from "react";
 import {
     HeaderSection1,
     MainContainer,
     HeaderText,
     HeaderButton,
-    UserCard
 } from "./styled";
+import MatchPage from "../MatchPage/MatchPage";
 
 export default function ChoicesPage(props) {
 
-    const [user, setUser] = useState({})
-    const [userList, setUserList] = useState([])
+    const [userProfile, setUserProfile] = useState(undefined)
+
+
+    const getProfileToChoose = () => {
+        axios
+            .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:daniel/person`)
+            .then(response => {
+                setUserProfile(response.data.profile)
+            })
+
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
+    const choosePerson = (choice) => {
+
+        const body = {
+            id: userProfile.id,
+            choice: choice
+        }
+
+        axios
+            .post(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daniel-andrade-ailton/choose-person`
+                , body)
+            .then(response => {
+                getProfileToChoose()
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
 
     useEffect(() => {
-        const getProfileToChoose = () => {
-            axios
-                .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:daniel/person`)
-                .then(response => {
-                    setUserList([...userList, response.data.profile])
-                })
+        getProfileToChoose()
+    }, [])
 
-                .catch(error => {
-                    console.log(error.message)
-                })
+    const clickYes = () => {
+        choosePerson(true)
+    }
 
-        }
-        getProfileToChoose(user)
-    }, [user])
-
-    console.log(userList)
-
+    const clickNo = () => {
+        choosePerson(false)
+    }
 
     return (
         <div>
@@ -43,20 +68,18 @@ export default function ChoicesPage(props) {
             </HeaderSection1>
 
             <MainContainer>
-                {userList.map(user => {
-                    return (
-                        <UserCard key={user.id}>
-                            {user.name}
-                            {user.age}
-                            {user.photo && <img src={user.photo}/>}
-                            {user.bio}
-                        </UserCard>
-
-                    )
-                })}
-                <button>Like</button>
-                <button>Dislike</button>
+                {userProfile ? (
+                    <>
+                        <ProfileCard profile={userProfile} />
+                        <div>
+                            <ChooseButton clickYes={clickYes} clickNo={clickNo} />
+                        </div>
+                    </>
+                ) : (
+                        <MatchPage />
+                           )}
             </MainContainer>
+
 
         </div>
     )
