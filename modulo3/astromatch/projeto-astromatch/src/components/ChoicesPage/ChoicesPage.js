@@ -6,20 +6,23 @@ import {
     HeaderSection1,
     MainContainer,
     HeaderText,
-    HeaderButton
+    HeaderButton,
+    UserCard
 } from "./styled";
 
 export default function ChoicesPage(props) {
 
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState({})
+    const [userList, setUserList] = useState([])
 
     useEffect(() => {
-        const getProfileToChoose = (user) => {
+        const getProfileToChoose = () => {
             axios
-                .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daniel/person`)
+                .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:daniel/person`)
                 .then(response => {
-                    setUser(response.data)
+                    setUserList([...userList, response.data.profile])
                 })
+
                 .catch(error => {
                     console.log(error.message)
                 })
@@ -27,6 +30,9 @@ export default function ChoicesPage(props) {
         }
         getProfileToChoose(user)
     }, [user])
+
+    console.log(userList)
+
 
     return (
         <div>
@@ -37,9 +43,19 @@ export default function ChoicesPage(props) {
             </HeaderSection1>
 
             <MainContainer>
-                <p>{user.age}</p>
-                <p>{user.photo}</p>
-                <p>{user.bio}</p>
+                {userList.map(user => {
+                    return (
+                        <UserCard key={user.id}>
+                            {user.name}
+                            {user.age}
+                            {user.photo && <img src={user.photo}/>}
+                            {user.bio}
+                        </UserCard>
+
+                    )
+                })}
+                <button>Like</button>
+                <button>Dislike</button>
             </MainContainer>
 
         </div>

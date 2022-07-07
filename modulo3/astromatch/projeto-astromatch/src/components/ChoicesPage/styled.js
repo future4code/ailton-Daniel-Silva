@@ -21,6 +21,16 @@ padding: 8px;
 export const MainContainer = styled.div`
 height: 100%;
 display: flex;
+flex-direction: column;
 justify-content: center;
 align-items: center;
+`
+
+export const UserCard = styled.div`
+height: 60vh;
+width: 60vh;
+display: flex;
+flex-direction: column;
+border: 1px solid black;
+
 `
