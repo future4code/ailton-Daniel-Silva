@@ -21,6 +21,20 @@ padding: 8px;
 export const MainContainer = styled.div`
 height: 100%;
 display: flex;
+flex-direction: column;
 justify-content: center;
 align-items: center;
+`
+
+export const MatchCard = styled.div`
+width: 15%;
+justify-content: space-between;
+align-items: center;
+display: flex;
+padding: 8px;
+
+> img {
+    height: 50px;
+    width: 50px;
+}
 `

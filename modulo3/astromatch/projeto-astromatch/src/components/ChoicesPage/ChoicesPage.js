@@ -10,7 +10,6 @@ import {
     HeaderText,
     HeaderButton,
 } from "./styled";
-import MatchPage from "../MatchPage/MatchPage";
 
 export default function ChoicesPage(props) {
 
@@ -68,16 +67,15 @@ export default function ChoicesPage(props) {
             </HeaderSection1>
 
             <MainContainer>
-                {userProfile ? (
+                {userProfile && (
                     <>
                         <ProfileCard profile={userProfile} />
                         <div>
                             <ChooseButton clickYes={clickYes} clickNo={clickNo} />
                         </div>
                     </>
-                ) : (
-                        <MatchPage />
-                           )}
+                )}
+
             </MainContainer>
 
 

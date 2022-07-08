@@ -9,8 +9,8 @@ import {
 export default function ChooseButton(props) {
     return (
         <ButtonsContainer>
-            <ButtonYes onClick={props.clickYes}>❤</ButtonYes>
             <ButtonNo onClick={props.clickNo}>X</ButtonNo>
+            <ButtonYes onClick={props.clickYes}>❤</ButtonYes>
         </ButtonsContainer>
     )
 }
