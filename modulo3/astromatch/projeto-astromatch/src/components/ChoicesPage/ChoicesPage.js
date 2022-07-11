@@ -9,6 +9,7 @@ import {
     MainContainer,
     HeaderText,
     HeaderButton,
+    ContainerGeral
 } from "./styled";
 
 export default function ChoicesPage(props) {
@@ -59,14 +60,16 @@ export default function ChoicesPage(props) {
     }
 
     return (
-        <div>
-
+        <ContainerGeral>
+           
             <HeaderSection1>
                 <HeaderText>AstroMatch</HeaderText>
                 <HeaderButton onClick={() => props.goToScreen("pagina match")}>Ver seus matchs!</HeaderButton>
+                <button onClick={props.clear}>Resetar</button>
             </HeaderSection1>
 
             <MainContainer>
+                
                 {userProfile && (
                     <>
                         <ProfileCard profile={userProfile} />
@@ -79,6 +82,6 @@ export default function ChoicesPage(props) {
             </MainContainer>
 
 
-        </div>
+        </ContainerGeral>
     )
 }

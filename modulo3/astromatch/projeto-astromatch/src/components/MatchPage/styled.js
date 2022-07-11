@@ -26,8 +26,18 @@ justify-content: center;
 align-items: center;
 `
 
+export const MatchContainer = styled.div`
+height: 70vh;
+width: 30vw;
+overflow: auto;
+display: flex;
+flex-direction: column;
+border: 1px solid black;
+align-items: center;
+`
+
 export const MatchCard = styled.div`
-width: 15%;
+width: 40%;
 justify-content: space-between;
 align-items: center;
 display: flex;

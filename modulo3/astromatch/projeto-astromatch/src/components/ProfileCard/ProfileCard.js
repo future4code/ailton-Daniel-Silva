@@ -7,7 +7,7 @@ import {
 export default function ProfileCard(props) {
 
     return (
-        <Card>
+        <Card key={props.profile.id}>
             {props.profile.photo && <img src={props.profile.photo} alt={props.profile.name} />}
             <NameAndAge>
                 <div>

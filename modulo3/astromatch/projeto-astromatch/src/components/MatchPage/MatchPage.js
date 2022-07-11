@@ -7,7 +7,8 @@ import {
     MainContainer,
     HeaderText,
     HeaderButton,
-    MatchCard
+    MatchCard,
+    MatchContainer
 } from "./styled";
 
 export default function MatchPage(props) {
@@ -35,21 +36,24 @@ export default function MatchPage(props) {
             <HeaderSection2>
                 <HeaderText>AstroMatch</HeaderText>
                 <HeaderButton onClick={() => props.goToScreen("pagina escolhas")}>Voltar pro início</HeaderButton>
+                <button onClick={props.clear}>Resetar</button>
             </HeaderSection2>
 
             <MainContainer>
 
                 {(matchList.length >= 1) ?
                     <>
-                        {matchList.map((profile) => {
-                            return (
-                                <MatchCard key={profile.id}>
-                                    {profile.photo && <img src={profile.photo} alt={profile.name} />}
-                                    {profile.name}
-                                </MatchCard>
-                            )
-                        })
-                        }
+                        <MatchContainer>
+                            {matchList.map((profile) => {
+                                return (
+                                    <MatchCard key={profile.id}>
+                                        {profile.photo && <img src={profile.photo} alt={profile.name} />}
+                                        {profile.name}
+                                    </MatchCard>
+                                )
+                            })
+                            }
+                        </MatchContainer>
                     </>
                     : <p>Nenhum match!</p>}
 

@@ -12,13 +12,24 @@ export default function App() {
 
   const [screen, setScreen] = useState("pagina escolhas")
 
+  const clear = () => {
+    axios
+      .put(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daniel-andrade-ailton/clear`)
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.log(error.message)
+      })
+  }
+
   const changeScreen = () => {
     switch (screen) {
       case "pagina escolhas":
-        return <ChoicesPage goToScreen={goToScreen}/>
+        return <ChoicesPage clear={clear} goToScreen={goToScreen}/>
         break;
       case "pagina match":
-        return <MatchPage goToScreen={goToScreen}/>
+        return <MatchPage clear={clear} goToScreen={goToScreen}/>
         break;
       default:
         return <p>Página inexistente!</p>

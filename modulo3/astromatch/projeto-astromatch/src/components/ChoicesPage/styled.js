@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+export const ContainerGeral = styled.div`
+`
+
 export const HeaderSection1 = styled.div`
 height: 12vh;
 border: 2px solid black;
@@ -24,22 +27,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-`
-
-export const UserCard = styled.div`
-height: 60vh;
-width: 40vw;
-display: flex;
-flex-direction: column;
-border: 1px solid black;
-align-items: center;
-justify-content: center;
-margin-top: 120px;
-
-> img {
-    height: 50vh;
-    width: 30vw;
-}
 `
 
 export const NameAndAge = styled.div`
