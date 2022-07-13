@@ -5,7 +5,8 @@ import { useEffect } from "react";
 import {
     Container,
     TripContainer,
-    TripListContainer
+    TripListContainer,
+    TextContainer
 } from "./styled";
 import axios from "axios";
 import lixo from "../../img/lata-de-lixo.png"
@@ -36,10 +37,10 @@ export const AdminHomePage = () => {
 
     return (
         <Container>
-            <h1> Painel Administrativo</h1>
-            <button onClick={() => goTo(navigate, "/admin/trips/create")}>Criar Viagem</button>
-            <button onClick={() => goTo(navigate, "/admin/trips/:id")}>Ver detalhes</button>
-            <button onClick={() => goTo(navigate, "/login")}>Voltar</button>
+            <TextContainer>
+                <h1> Painel Administrativo</h1>
+            </TextContainer>
+
             <TripListContainer>
                 {trips.map((trip) => {
                     const { id, name, description, planet, durationInDays, date } = trip
@@ -51,6 +52,9 @@ export const AdminHomePage = () => {
                     )
                 })}
             </TripListContainer>
+            <button onClick={() => goTo(navigate, "/admin/trips/create")}>Criar Viagem</button>
+            <button onClick={() => goTo(navigate, "/admin/trips/:id")}>Ver detalhes</button>
+            <button onClick={() => goTo(navigate, "/login")}>Voltar</button>
         </Container>
     )
 }

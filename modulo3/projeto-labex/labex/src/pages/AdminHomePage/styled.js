@@ -27,7 +27,15 @@ export const TripListContainer = styled.div`
 display: flex;
 flex-direction: column;
 gap: 16px;
-width: 80vw;
-height: 80vh;
+width: 70vw;
+height: 60vh;
 align-items: center;
+`
+
+export const TextContainer = styled.div`
+color: white;
+height: 16vh;
+display: flex;
+align-items: center;
+justify-content: center;
 `
