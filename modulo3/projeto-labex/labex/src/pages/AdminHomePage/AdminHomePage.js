@@ -1,15 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { goTo } from "../../routes/coordinator"
+import { useEffect } from "react";
+import {
+    Container,
+    TripContainer,
+    TripListContainer
+} from "./styled";
+import axios from "axios";
+import lixo from "../../img/lata-de-lixo.png"
 
 export const AdminHomePage = () => {
+
+    const [trips, setTrips] = useState([])
+
     const navigate = useNavigate()
 
+    useEffect(() => {
+        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips")
+            .then((response) => {
+                setTrips(response.data.trips)
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
+    }, [])
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+
+        if (token === null) {
+            navigate("/login")
+        }
+    }, [])
+
     return (
-        <div>
-        <p> AdminHomePage </p>
-        <button onClick={() => goTo(navigate, "/admin/trips/:id")}>Ver detalhes</button>
-        <button onClick={() => goTo(navigate, "/login")}>Voltar</button>
-        </div>
+        <Container>
+            <h1> Painel Administrativo</h1>
+            <button onClick={() => goTo(navigate, "/admin/trips/create")}>Criar Viagem</button>
+            <button onClick={() => goTo(navigate, "/admin/trips/:id")}>Ver detalhes</button>
+            <button onClick={() => goTo(navigate, "/login")}>Voltar</button>
+            <TripListContainer>
+                {trips.map((trip) => {
+                    const { id, name, description, planet, durationInDays, date } = trip
+                    return (
+                        <TripContainer key={id}>
+                            <p>{name}</p>
+                            <img src={lixo} />
+                        </TripContainer>
+                    )
+                })}
+            </TripListContainer>
+        </Container>
     )
 }
