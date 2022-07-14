@@ -18,7 +18,7 @@ export const AdminHomePage = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips")
+        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/daniel-ailton/trips")
             .then((response) => {
                 setTrips(response.data.trips)
             })

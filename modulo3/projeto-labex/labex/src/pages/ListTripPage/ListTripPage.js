@@ -16,7 +16,7 @@ export const ListTripPage = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips")
+        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/daniel-ailton/trips")
             .then((response) => {
                 setTrips(response.data.trips)
             })
@@ -40,6 +40,7 @@ export const ListTripPage = () => {
                             <p>Planeta: {planet}</p>
                             <p>Duração: {durationInDays} dias</p>
                             <p>Data: {date}</p>
+                            <button onClick={() => goTo(navigate, `/trips/application/${id}`)}>Fazer Aplicação</button>
                         </TripContainer>
                     )
                 })}

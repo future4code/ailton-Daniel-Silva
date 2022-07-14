@@ -16,7 +16,7 @@ export const TripDetailsPage = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token')
-        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trip/NAOp5L3Wuunexq9SbUso`, {
+        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/daniel-ailton/trip/NAOp5L3Wuunexq9SbUso`, {
             headers: {
                 auth: token
             }

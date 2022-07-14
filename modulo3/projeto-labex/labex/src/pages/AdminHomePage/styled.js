@@ -16,8 +16,8 @@ export const TripContainer = styled.div`
 display: flex;
 color: white;
 border: 2px solid gold;
-width: 50%;
-height: 10%;
+width: 60%;
+height: 15%;
 align-items: center;
 justify-content: space-around;
 font-size: 20px;
@@ -27,9 +27,10 @@ export const TripListContainer = styled.div`
 display: flex;
 flex-direction: column;
 gap: 16px;
-width: 70vw;
+width: 60vw;
 height: 60vh;
 align-items: center;
+overflow: auto;
 `
 
 export const TextContainer = styled.div`
