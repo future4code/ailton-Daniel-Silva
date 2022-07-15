@@ -10,7 +10,7 @@ justify-content: space-around;
 align-items: center;
 border: 1px solid black;
 background-color: #0A0847;
-border: 2px solid gold;
+border: 2px solid white;
 color: white;
 opacity: 80%;
 `
@@ -27,15 +27,16 @@ align-items: center;
 justify-content: center;
 `
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.form`
 display: flex;
 flex-direction: column;
-gap: 10px;
+gap: 30px;
 align-items: center;
+justify-content: space-around;
 `
 
 export const LoginButton = styled.button`
-width: 40%;
+width: 100%;
 cursor: pointer;
 border-radius: 4px;
 padding: 10px;
@@ -54,7 +55,7 @@ width: 16vw;
 margin-top: 20px;
 background-color: #0A0847;
 color: white;
-border: 2px solid gold;
+border: 2px solid white;
 border-radius: 4px;
 padding: 8px;
 cursor: pointer;

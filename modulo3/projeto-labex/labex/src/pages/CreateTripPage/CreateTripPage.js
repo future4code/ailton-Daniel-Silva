@@ -4,6 +4,11 @@ import { goTo } from "../../routes/coordinator"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useForm from "../../hooks/useForm";
+import {
+    Container,
+    InputContainer,
+    SendButton
+} from "./styled"
 
 export const CreateTripPage = () => {
 
@@ -48,8 +53,8 @@ export const CreateTripPage = () => {
     }, [])
 
     return (
-        <div>
-            <form onSubmit={createTrip}>
+        <Container>
+            <InputContainer onSubmit={createTrip}>
                 <input
                     name={"name"}
                     placeholder="Nome"
@@ -89,10 +94,10 @@ export const CreateTripPage = () => {
                     required
                     type={"number"}
                 />
-                <button>Criar Viagem</button>
-            </form>
+                <SendButton>Criar Viagem</SendButton>
+            </InputContainer>
 
             <button onClick={() => goTo(navigate, "/admin/trips/list")}>Voltar</button>
-        </div>
+        </Container>
     )
 }

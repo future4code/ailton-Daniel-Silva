@@ -5,14 +5,14 @@ export const TripContainer = styled.div`
 font-size: 20px;
 display: flex;
 flex-direction: column;
-border: 2px solid gold;
+border: 2px solid white;
 width: 25vw;
 min-height:30vh;
 align-items: center;
 justify-content: center;
 color: white;
 gap: 16px;
-box-shadow: 4px 4px gold;
+box-shadow: 3px 1px white;
 word-wrap: break-word;
 word-break: break-all;
 `

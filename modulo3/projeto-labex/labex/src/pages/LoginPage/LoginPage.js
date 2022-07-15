@@ -40,8 +40,8 @@ export const LoginPage = () => {
 
             <LoginContainer>
                 <h1>Faça o Login</h1>
-                <InputContainer>
-                    <form onClick={onSubmitLogin}>
+                
+                    <InputContainer onClick={onSubmitLogin}>
                         <label>E-mail:</label>
                         <input
                             name={"email"}
@@ -61,8 +61,8 @@ export const LoginPage = () => {
                             required
                         />
                         <LoginButton>Entrar</LoginButton>
-                    </form>
-                </InputContainer>
+                    </InputContainer>
+                
 
 
             </LoginContainer>

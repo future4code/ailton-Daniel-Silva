@@ -15,7 +15,7 @@ align-items: center;
 export const TripContainer = styled.div`
 display: flex;
 color: white;
-border: 2px solid gold;
+border: 2px solid white;
 width: 60%;
 height: 15%;
 align-items: center;

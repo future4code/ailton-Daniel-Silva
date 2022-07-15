@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import fundo from "../../img/fundo-labex.JPG";
+import fundo from "../../img/fundo-labex.jpg";
 
 export const Container = styled.div`
 display: flex;

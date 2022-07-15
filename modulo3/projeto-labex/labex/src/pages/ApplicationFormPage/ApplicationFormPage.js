@@ -4,6 +4,11 @@ import { goTo } from "../../routes/coordinator"
 import { useState } from "react";
 import axios from 'axios'
 import useForm from "../../hooks/useForm";
+import {
+    Container,
+    InputContainer,
+    SendButton
+} from "./styled"
 
 export const ApplicationFormPage = () => {
 
@@ -23,14 +28,14 @@ export const ApplicationFormPage = () => {
     const applyToTrip = (event, id) => {
 
         axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/daniel-ailton/trips/${pathParams.id}/apply`,
-        form)
-        .then((response) => {
-          setApplication(response.data)
-          console.log("deu bão:", response.data)
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
+            form)
+            .then((response) => {
+                setApplication(response.data)
+                console.log("deu bão:", response.data)
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
 
         event.preventDefault()
         console.log("forms enviado", form)
@@ -38,8 +43,8 @@ export const ApplicationFormPage = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={applyToTrip}>
+        <Container>
+            <InputContainer onSubmit={applyToTrip}>
                 <input
                     name={"name"}
                     placeholder="Nome"
@@ -79,10 +84,10 @@ export const ApplicationFormPage = () => {
                     onChange={onChange}
                     required
                 />
-                <button>Enviar Aplicação</button>
-            </form>
+                <SendButton>Enviar Aplicação</SendButton>
+            </InputContainer>
 
             <button onClick={() => goTo(navigate, "/trips/list")}>Voltar</button>
-        </div>
+        </Container>
     )
 }
