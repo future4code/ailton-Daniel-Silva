@@ -45,3 +45,34 @@ display: flex;
 align-items: center;
 justify-content: center;
 `
+
+export const GoBackButton = styled.button`
+width: 16vw;
+margin-top: 40px;
+background-color: #0A0847;
+color: white;
+border: 2px solid white;
+border-radius: 4px;
+padding: 8px;
+cursor: pointer;
+
+:hover {
+    opacity: 75%;
+    border: 2px solid gold;
+}
+`
+
+export const ApplicationButton = styled.button`
+width: 40%;
+cursor: pointer;
+border-radius: 4px;
+padding: 10px;
+background-color: blueviolet;
+color: white;
+border: 2px solid white;
+font-size: 16px;
+
+:hover { 
+    padding: 15px;
+}
+`

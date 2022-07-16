@@ -25,10 +25,11 @@ export const TextContainer = styled.div`
 color: white;
 font-size: 180px;
 justify-content: center;
-width: 100vw;
-height: 30vh;
 display: flex;
-text-shadow: 2px, 2px, 2px, white;
+background-color: black;
+opacity: 80%;
+border: 1px solid white;
+padding: 10px;
 `
 
 export const SiteButton = styled.button`

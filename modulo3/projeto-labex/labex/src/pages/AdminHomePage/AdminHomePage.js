@@ -6,14 +6,16 @@ import {
     Container,
     TripContainer,
     TripListContainer,
-    TextContainer
+    TextContainer,
+    StyledButton,
+    DetailAndDeleteButton
 } from "./styled";
 import axios from "axios";
-import lixo from "../../img/lata-de-lixo.png"
 
 export const AdminHomePage = () => {
 
     const [trips, setTrips] = useState([])
+    const [deltrip, setDelTrip] = useState(0)
 
     const navigate = useNavigate()
 
@@ -25,7 +27,22 @@ export const AdminHomePage = () => {
             .catch((error) => {
                 console.log(error.message)
             })
-    }, [])
+    }, [deltrip])
+
+    const deleteTrip = (id) => {
+        const token = localStorage.getItem('token')
+
+        axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/daniel-ailton/trips/${id}`,{
+            headers: { auth: token
+        }})
+        .then((response) => {
+            alert("Viagem deletada!")
+            setDelTrip(deltrip + 1)
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
+    }
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -42,19 +59,18 @@ export const AdminHomePage = () => {
             </TextContainer>
 
             <TripListContainer>
-                {trips.map((trip) => {
-                    const { id, name, description, planet, durationInDays, date } = trip
+                {trips?.map((trip) => {
                     return (
-                        <TripContainer key={id}>
-                            <p>{name}</p>
-                            <img src={lixo} />
+                        <TripContainer key={trip.id}>
+                            <p>{trip.name}</p>
+                            <DetailAndDeleteButton onClick={() => goTo(navigate, `/admin/trips/${trip.id}`)}>Ver detalhes</DetailAndDeleteButton>
+                            <DetailAndDeleteButton onClick={() => deleteTrip(trip.id)}>Deletar</DetailAndDeleteButton>
                         </TripContainer>
                     )
                 })}
             </TripListContainer>
-            <button onClick={() => goTo(navigate, "/admin/trips/create")}>Criar Viagem</button>
-            <button onClick={() => goTo(navigate, "/admin/trips/:id")}>Ver detalhes</button>
-            <button onClick={() => goTo(navigate, "/login")}>Voltar</button>
+            <StyledButton onClick={() => goTo(navigate, "/admin/trips/create")}>Criar Viagem</StyledButton>
+            <StyledButton onClick={() => goTo(navigate, "/login")}>Voltar</StyledButton>
         </Container>
     )
 }

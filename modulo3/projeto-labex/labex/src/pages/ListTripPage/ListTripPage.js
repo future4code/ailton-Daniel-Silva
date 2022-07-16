@@ -6,7 +6,9 @@ import {
     TripContainer,
     TripsListContainer,
     Container,
-    TextContainer
+    TextContainer,
+    GoBackButton,
+    ApplicationButton
 } from "./styled"
 
 export const ListTripPage = () => {
@@ -40,12 +42,12 @@ export const ListTripPage = () => {
                             <p>Planeta: {planet}</p>
                             <p>Duração: {durationInDays} dias</p>
                             <p>Data: {date}</p>
-                            <button onClick={() => goTo(navigate, `/trips/application/${id}`)}>Fazer Aplicação</button>
+                            <ApplicationButton onClick={() => goTo(navigate, `/trips/application/${id}`)}>Fazer Aplicação</ApplicationButton>
                         </TripContainer>
                     )
                 })}
             </TripsListContainer>
-            <button onClick={() => goTo(navigate, "/")}>Voltar</button>
+            <GoBackButton onClick={() => goTo(navigate, "/")}>Voltar</GoBackButton>
         </Container>
     )
 }
