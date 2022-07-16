@@ -53,7 +53,7 @@ export const TripDetailsPage = () => {
                 <TextCandidates>
                     Candidatos Aplicados
                 </TextCandidates>
-                {tripDetail.candidates?.map((candidate) => {
+                {tripDetail.candidates?.length > 0 ? tripDetail.candidates?.map((candidate) => {
                     return (
                         <CandidatesContainer key={candidate.name}>
                             <p>Nome: {candidate.name}</p>
@@ -63,7 +63,7 @@ export const TripDetailsPage = () => {
                             <p>Texto de Aplicação: {candidate.applicationText}</p>
                         </CandidatesContainer>
                     )
-                })}
+                }) : <p>Ainda não há candidatos!</p>}
             </TripDetailsContainer>
             <GoBackButton onClick={() => goTo(navigate, "/admin/trips/list")}>Voltar</GoBackButton>
         </Container>

@@ -16,16 +16,21 @@ export const AdminHomePage = () => {
 
     const [trips, setTrips] = useState([])
     const [deltrip, setDelTrip] = useState(0)
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState("")
 
     const navigate = useNavigate()
 
     useEffect(() => {
+        setIsLoading(true)
         axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/daniel-ailton/trips")
             .then((response) => {
+                setIsLoading(false)
                 setTrips(response.data.trips)
             })
             .catch((error) => {
-                console.log(error.message)
+                setIsLoading(false)
+                setError(error)
             })
     }, [deltrip])
 
@@ -57,6 +62,9 @@ export const AdminHomePage = () => {
             <TextContainer>
                 <h1> Painel Administrativo</h1>
             </TextContainer>
+            {isLoading && <p>Carregando...</p>}
+            {!isLoading && error && <p>Ocorreu um erro!</p>}
+            {!isLoading && trips && trips.length > 0 &&
 
             <TripListContainer>
                 {trips?.map((trip) => {
@@ -68,7 +76,8 @@ export const AdminHomePage = () => {
                         </TripContainer>
                     )
                 })}
-            </TripListContainer>
+            </TripListContainer>}
+            {!isLoading && trips && trips.length === 0 && <p>Não existem viagens disponíveis</p>}
             <StyledButton onClick={() => goTo(navigate, "/admin/trips/create")}>Criar Viagem</StyledButton>
             <StyledButton onClick={() => goTo(navigate, "/login")}>Voltar</StyledButton>
         </Container>

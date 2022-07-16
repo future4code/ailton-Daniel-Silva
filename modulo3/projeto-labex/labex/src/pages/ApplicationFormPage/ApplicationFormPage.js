@@ -41,7 +41,6 @@ export const ApplicationFormPage = () => {
             })
 
         event.preventDefault()
-        console.log("forms enviado", form)
         cleanFields()
     }
 

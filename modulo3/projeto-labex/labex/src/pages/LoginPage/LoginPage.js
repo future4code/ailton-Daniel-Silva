@@ -24,7 +24,6 @@ export const LoginPage = () => {
         axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/daniel-ailton/login",
             form)
             .then((response) => {
-                console.log("Deu certo: ", response.data.token)
                 localStorage.setItem('token', response.data.token)
                 navigate("/admin/trips/list")
             })

@@ -35,6 +35,11 @@ background-image: url(${fundoTrips});
 background-size: cover;
 background-position: center;
 align-items: center;
+> p {
+    color: white;
+    font-size: 40px;
+}
+
 `
 
 export const TextContainer = styled.div`
