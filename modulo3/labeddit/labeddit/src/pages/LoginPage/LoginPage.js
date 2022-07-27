@@ -31,8 +31,8 @@ const LoginPage = () => {
                 onChange={onChange}
                 required
                 type={"password"}
-                placeholder={"Senha"} />
-
+                placeholder={"Senha"} 
+                />
                 <button>Login</button>
             </LoginForm>
         </div>
