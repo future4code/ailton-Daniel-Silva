@@ -1,0 +1,12 @@
+{
+  "name": "nome-e-idade",
+  "version": "1.0.0",
+  "description": "Retorna nome e idade",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "author": "Daniel Andrade",
+  "license": "ISC"
+}
