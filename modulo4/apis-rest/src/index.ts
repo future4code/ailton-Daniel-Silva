@@ -118,7 +118,7 @@ app.put("/changeUser/:id", (request: Request, response: Response) => {
           throw new Error(`O usuário de index ${request.params.id} não foi encontrado!`)
         }
 
-        users[userIndex].name = "-ALTERADO" //name
+        users[userIndex].name = users[userIndex].name + "-ALTERADO" //name
 
         response.status(200).send(users)
 
@@ -143,7 +143,7 @@ app.patch("/rechangeUser/:id", (request: Request, response: Response) => {
       throw new Error(`O usuário de index ${request.params.id} não foi encontrado!`)
     }
 
-    users[userIndex].name = "-REALTERADO" //name
+    users[userIndex].name = users[userIndex].name + "-REALTERADO" //name
 
     response.status(200).send(users)
   } catch (error: any) {
