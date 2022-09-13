@@ -1,0 +1,11 @@
+POST http://localhost:3003/cadastro-cep/:cep
+Content-Type: application/json
+
+{
+    "CEP": "27262022",
+    "numero": "de 2 a 528 - lado par",
+    "logradouro": "Rua Duzentos e Sete",
+    "bairro": "São Lucas",
+    "cidade": "Volta Redonda",
+    "estado": "RJ"
+}
