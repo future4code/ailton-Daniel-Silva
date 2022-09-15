@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { UserDatabase } from "../data/UserDatabase";
 import { InvalidCredencial } from "../error/InvalidCredencial";
 import { InvalidPassword } from "../error/InvalidPassword";
+import { InvalidToken } from "../error/InvalidToken";
 import { MissingFields } from "../error/MissingFields";
 import { User } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
@@ -68,6 +69,62 @@ export class UserEndpoint {
             const token = new Authenticator().generateToken({id: emailExist.getId()})
 
             res.status(200).send({token})
+
+        } catch (error: any) {
+            res.status(error.statusCode || 500).send({message: error.message})
+        }
+    }
+
+    async profile(req: Request, res: Response) {
+        try {
+            
+            const token = req.headers.authorization as string
+
+            if(!token) {
+                throw new InvalidToken()
+            }
+
+            const verifyToken = new Authenticator().verifyToken(token)
+
+            if (!verifyToken) {
+                throw new InvalidToken()
+            }
+
+            const userData = new UserDatabase()
+            
+            const result = await userData.getProfile(verifyToken.id)
+
+            res.status(200).send({id: result.id, name: result.name, email: result.email})
+
+        } catch (error: any) {
+            res.status(error.statusCode || 500).send({message: error.message})
+        }
+    }
+
+    async profileUser(req: Request, res: Response) {
+        try {
+            const token = req.headers.authorization as string
+            const id = req.params.id as string
+       
+            if (!token) {
+              throw new InvalidToken();
+            }
+            
+            if (!id) {
+                throw new MissingFields()
+            }
+            
+            const verifyToken = new Authenticator().verifyToken(token)
+
+            if (!verifyToken) {
+                throw new InvalidToken()
+            }
+
+            const userData = new UserDatabase() 
+
+            const result = await userData.getProfile(id)
+
+            res.status(200).send({id: result.id, name: result.name, email: result.email})
 
         } catch (error: any) {
             res.status(error.statusCode || 500).send({message: error.message})

@@ -28,4 +28,5 @@ export class User {
   public getPassword() {
     return this.password;
   }
+
 }

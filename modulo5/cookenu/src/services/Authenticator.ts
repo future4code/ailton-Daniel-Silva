@@ -23,9 +23,9 @@ export class Authenticator {
   }
 
   public verifyToken(token: string): AuthenticationData {
-    
+   
     const verify = jwt.verify(token, String(process.env.JWT_KEY)) as any
-
-    return verify 
+    
+    return verify.usuario
   }
 }
