@@ -38,4 +38,15 @@ export class UserDatabase extends BaseDataBase {
       return result[0]
     }
 
+    async followUser(idFollower: string, idUser: string): Promise<string> {
+      
+      await this.getConnection()
+      .insert({
+        id_follower: idFollower,
+        id_followedUser: idUser
+      })
+      .into("followers_cookenu")
+
+      return `User with ID ${idFollower} now is following user with ID ${idUser}`
+    }
 }
