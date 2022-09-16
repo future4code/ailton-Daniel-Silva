@@ -15,11 +15,15 @@ export class UserDatabase extends BaseDataBase {
           return `User ${user.getName()} created successfully!`
     }
 
-    async getUserByEmail(email: string) {
+    async getUserByEmail(email: string): Promise<User|undefined> {
       const result = await this.getConnection()
       .select("*")
       .from("user_cookenu")
       .where({email})
+
+       if (!result.length) {
+         return undefined
+       }
 
       return new User(result[0].id, result[0].name, result[0].email, result[0].password)
     }

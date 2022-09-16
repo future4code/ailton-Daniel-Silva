@@ -13,3 +13,4 @@ app.get("/user/:id", user.profileUser)
 const recipe = new RecipeEndpoint()
 
 app.post("/recipe", recipe.createRecipe)
+app.get("/recipe/:id", recipe.getRecipe)

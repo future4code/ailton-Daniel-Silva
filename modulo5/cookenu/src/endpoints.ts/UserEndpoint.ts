@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { UserDatabase } from "../data/UserDatabase";
+import { EmailExist } from "../error/EmailExist";
 import { InvalidCredencial } from "../error/InvalidCredencial";
+import { InvalidId } from "../error/InvalidId";
 import { InvalidPassword } from "../error/InvalidPassword";
 import { InvalidToken } from "../error/InvalidToken";
 import { MissingFields } from "../error/MissingFields";
@@ -25,6 +27,12 @@ export class UserEndpoint {
             }
 
             const userData = new UserDatabase()
+
+            const emailAlreadyExist = await userData.getUserByEmail(email)
+              
+            if (emailAlreadyExist) {
+                throw new EmailExist()
+            }
 
             const id = new GenerateId().createId()
 
@@ -123,6 +131,10 @@ export class UserEndpoint {
             const userData = new UserDatabase() 
 
             const result = await userData.getProfile(id)
+
+            if(!result) {
+                throw new InvalidId()
+            }
 
             res.status(200).send({id: result.id, name: result.name, email: result.email})
 
