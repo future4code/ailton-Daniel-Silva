@@ -183,6 +183,35 @@ export class UserEndpoint {
 
     async unfollowUser(req: Request, res: Response) {
         try {
+
+             const token = req.headers.authorization;
+             const { idUser } = req.body
+
+             if (!token) {
+               throw new InvalidToken()
+             }
+
+             if (!idUser) {
+               throw new MissingFields()
+             }
+
+             const verifyToken = new Authenticator().verifyToken(token)
+
+             if (!verifyToken) {
+               throw new InvalidToken();
+             }
+
+             const idFollower = verifyToken.id;
+
+             const userData = new UserDatabase()
+
+             const result = await userData.unfollowUser(idFollower, idUser)
+
+             if (!result) {
+               throw new InvalidId()
+             }
+
+             res.status(200).send({ message: result })
             
         } catch (error: any) {
             res.status(error.statusCode || 500).send({message: error.message})
