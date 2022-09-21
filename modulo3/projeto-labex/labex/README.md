@@ -10,7 +10,7 @@ Para vizualizar o projeto é possível acesá-lo através do link a seguir:
 Para visitar a parte que o usuário deve estar logado, utilizar o login e senha abaixo:
 
 Email: danielzindobreak@bol.com.br
-Senha: 1234581321
+Senha: 123581321
 
 # Sobre
 
