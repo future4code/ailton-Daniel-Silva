@@ -3,13 +3,13 @@ export class Post {
     private id: string
     private content: string
     private userId: string
-    private likes: number = 0
+    // private likes: number = 0
 
-    constructor(id: string, content: string, userId: string, likes: number) {
+    constructor(id: string, content: string, userId: string) {
         this.id = id,
         this.content = content,
-        this.userId = userId,
-        this.likes = likes
+        this.userId = userId
+        // this.likes = likes
     }
 
     public getId = () => {
@@ -24,7 +24,7 @@ export class Post {
         return this.userId
     }
 
-    public getLikes = () => {
-        return this.likes
-    }
+    // public getLikes = () => {
+    //     return this.likes
+    // }
 }
