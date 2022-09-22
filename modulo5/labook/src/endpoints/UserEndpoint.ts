@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { UserDataBase } from "../data/UserDataBase";
 import { EmailExist } from "../error/EmailExist";
+import { InvalidCredencial } from "../error/InvalidCredencial";
 import { MissingFields } from "../error/MissingFields";
 import { ShortName } from "../error/ShortName";
 import { ShortPassword } from "../error/ShortPassword";
@@ -52,6 +53,42 @@ export class UserEndpoint {
             const token = new Authenticator().generateToken({id, role})
 
             res.status(201).send({message: response, token})
+
+        } catch (error: any) {
+            res.status(error.statusCode || 500).send({message: error.message})
+        }
+    }
+
+    async login(req: Request, res: Response) {
+        try {
+            
+            const {email, password} = req.body
+
+            if(!email || !password) {
+                throw new MissingFields()
+            }
+
+            if (password.length < 6) {
+              throw new ShortPassword()
+            }
+
+            const userData = new UserDataBase()
+
+            const emailExist = await userData.getUserByEmail(email)
+
+            if (!emailExist) {
+               throw new InvalidCredencial()
+             }
+
+            const correctPassword = await new HashManager().compare(password, emailExist.password)
+
+            if(!correctPassword) {
+                throw new InvalidCredencial()
+            }
+
+            const token = new Authenticator().generateToken({id: emailExist.id, role: emailExist.role})
+
+            res.status(200).send({message: "User logged in!", token})
 
         } catch (error: any) {
             res.status(error.statusCode || 500).send({message: error.message})

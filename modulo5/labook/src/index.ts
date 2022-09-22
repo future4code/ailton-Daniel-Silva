@@ -4,3 +4,4 @@ import { UserEndpoint } from "./endpoints/UserEndpoint";
 const user = new UserEndpoint()
 
 app.post("/signup", user.signup)
+app.post("/login", user.login)
