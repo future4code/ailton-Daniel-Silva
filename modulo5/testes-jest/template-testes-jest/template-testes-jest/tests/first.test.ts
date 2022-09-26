@@ -23,7 +23,7 @@ describe("Testando jest", () => {
     })
 
     test("Verificando número randômico", () => {
-      expect(randomValue(1, 11)).toBeLessThanOrEqual(10)
+      expect(randomValue(1, 10)).toBeLessThanOrEqual(10)
     })
 
     test("Verificando a usuario no array de usuarios", () => {
@@ -71,7 +71,7 @@ describe("Testando jest", () => {
     }
 
     const randomValue = (min: number, max: number): number => {
-      return Math.random() * (max - min + 1) + min
+      return Math.random() * (max - min) + min
     }
 
     const average = (array: number[]): number => {
