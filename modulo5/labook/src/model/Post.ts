@@ -1,9 +1,20 @@
+export interface ICreatePostInputDTO {
+    content: string,
+    token: string
+}
+
+export interface ICreatePostOutputDTO {
+    message: string,
+    post: Post
+}
+
 export class Post {
 
     private id: string
     private content: string
     private userId: string
     // private likes: number = 0
+
 
     constructor(id: string, content: string, userId: string) {
         this.id = id,

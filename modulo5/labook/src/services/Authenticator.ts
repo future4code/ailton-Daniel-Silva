@@ -24,9 +24,9 @@ export class Authenticator {
     return token;
   }
 
-  public verifyToken(token: string): AuthenticationData {
-    const verify = jwt.verify(token, String(process.env.JWT_KEY)) as any;
+  public verifyToken(token: string): ITokenPayload {
+    const verify = jwt.verify(token, String(process.env.JWT_KEY)) as any
 
-    return verify.usuario;
+    return verify.payload as ITokenPayload
   }
 }

@@ -10,7 +10,5 @@ export class PostDataBase extends BaseDataBase {
             user_id: post.getUserId()
         })
         .into("post_labook")
-
-        return `Post created!`
     }
 }
