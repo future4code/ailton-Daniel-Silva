@@ -3,7 +3,7 @@ import { BaseDataBase } from "./BaseDataBase";
 
 export class UserDataBase extends BaseDataBase {
 
-  public async createUser(user: User): Promise<string> {
+  public async createUser(user: User) {
     await this.getConnection()
       .insert({
         id: user.getId(),
@@ -14,7 +14,6 @@ export class UserDataBase extends BaseDataBase {
       })
       .into("user_labook");
 
-    return `User ${user.getName()} created sucessfully!`;
   }
 
   public getUserByEmail = async (email: string) => {

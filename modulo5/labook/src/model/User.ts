@@ -17,6 +17,26 @@ export interface ISignupInputDTO {
   password: string;
 }
 
+export interface ISignupOutputDTO {
+  message: string,
+  token: string
+}
+
+export interface ITokenPayload {
+  id: string,
+  role: USER_ROLES
+}
+
+export interface ILoginInputDTO {
+  email: string,
+  password: string
+}
+
+export interface ILoginOutputDTO {
+  message: string,
+  token: string
+}
+
 export class User {
   private id: string;
   private name: string;

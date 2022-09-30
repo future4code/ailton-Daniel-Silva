@@ -1,6 +1,6 @@
 import * as jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { USER_ROLES } from "../model/User";
+import { ITokenPayload, USER_ROLES } from "../model/User";
 
 dotenv.config();
 
@@ -10,10 +10,10 @@ export interface AuthenticationData {
 }
 
 export class Authenticator {
-  public generateToken(usuario: AuthenticationData): string {
+  public generateToken(payload: ITokenPayload): string {
     const token = jwt.sign(
       {
-        usuario,
+        payload,
       },
       String(process.env.JWT_KEY),
       {
